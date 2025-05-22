@@ -15,7 +15,7 @@
         <div id="humchart">
         </div>
     </div>
-    
+
     <script>
         var tempchartoptions = {
                 chart: {
@@ -36,19 +36,7 @@
             },
             series: [{
                 name: 'temperature',
-                data: [
-                    @if(!$data->isEmpty())
-                    @foreach($data as $item)
-                        {
-                            x:"{{$item->time}}",
-                            y:"{{round($item->temperature/$item->numbers,2)}}",
-                        }
-                        @if(!($loop->last))
-                        ,
-                        @endif
-                    @endforeach
-                    @endif
-                ]
+                data: @json($data)
             }],
             xaxis: {
                 type: 'datetime',
@@ -63,14 +51,14 @@
                 }
             }
         }
-    
+
         var tempchart = new ApexCharts(document.querySelector("#tempchart"), tempchartoptions);
-    
+
         tempchart.render();
     </script>
 
     <script>
-        
+
         var humchartoptions = {
                 chart: {
                 type: 'area',
@@ -117,9 +105,9 @@
                 }
             }
         }
-    
+
         var humchart = new ApexCharts(document.querySelector("#humchart"), humchartoptions);
-    
+
         humchart.render();
     </script>
 

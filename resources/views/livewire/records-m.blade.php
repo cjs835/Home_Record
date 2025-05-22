@@ -15,10 +15,10 @@
         <div id="humchart">
         </div>
     </div>
-    
+
     <script>
         var tempchartoptions = {
-                chart: {
+            chart: {
                 type: 'area',
                 height: 325,
                 animations: {
@@ -36,25 +36,13 @@
             },
             series: [{
                 name: 'temperature',
-                data: [
-                    @if(!$data->isEmpty())
-                    @foreach($data as $item)
-                        {
-                            x:"{{$item->time}}",
-                            y:"{{$item->temperature}}",
-                        }
-                        @if(!($loop->last))
-                        ,
-                        @endif
-                    @endforeach
-                    @endif
-                ]
+                data: @json($temperature)
             }],
             xaxis: {
                 type: 'datetime',
                 labels: {
                     format: 'yyyy-MM-dd HH:mm:ss',
-                    datetimeUTC:false,
+                    datetimeUTC: false,
                 }
             },
             tooltip: {
@@ -63,16 +51,15 @@
                 }
             }
         }
-    
+
         var tempchart = new ApexCharts(document.querySelector("#tempchart"), tempchartoptions);
-    
+
         tempchart.render();
     </script>
 
     <script>
-        
         var humchartoptions = {
-                chart: {
+            chart: {
                 type: 'area',
                 height: 325,
                 animations: {
@@ -90,25 +77,13 @@
             },
             series: [{
                 name: 'humidity',
-                data: [
-                    @if(!$data->isEmpty())
-                    @foreach($data as $item)
-                        {
-                            x:"{{$item->time}}",
-                            y:"{{$item->humidity}}",
-                        }
-                        @if(!($loop->last))
-                        ,
-                        @endif
-                    @endforeach
-                    @endif
-                ]
+                data: @json($humidity)
             }],
             xaxis: {
                 type: 'datetime',
                 labels: {
                     format: 'yyyy-MM-dd HH:mm:ss',
-                    datetimeUTC:false,
+                    datetimeUTC: false,
                 }
             },
             tooltip: {
@@ -117,9 +92,9 @@
                 }
             }
         }
-    
+
         var humchart = new ApexCharts(document.querySelector("#humchart"), humchartoptions);
-    
+
         humchart.render();
     </script>
 

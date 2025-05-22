@@ -7,7 +7,7 @@
         <div id="Requestschart">
         </div>
     </div>
-    
+
     <script>
         var Requestschartoptions = {
                 chart: {
@@ -28,19 +28,7 @@
             },
             series: [{
                 name: 'temperature',
-                data: [
-                    @if(!$data->isEmpty())
-                    @foreach($data as $item)
-                        {
-                            x:"{{$item->time}}",
-                            y:"{{$item->numbers}}",
-                        }
-                        @if(!($loop->last))
-                        ,
-                        @endif
-                    @endforeach
-                    @endif
-                ]
+                data: @json($numbers)
             }],
             xaxis: {
                 type: 'datetime',
@@ -55,9 +43,9 @@
                 }
             }
         }
-    
+
         var Requestschart = new ApexCharts(document.querySelector("#Requestschart"), Requestschartoptions);
-    
+
         Requestschart.render();
     </script>
 </div>
