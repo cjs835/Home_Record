@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Record;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
@@ -10,10 +11,8 @@ class RecordsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         Record::truncate();
         $max = 2500;
